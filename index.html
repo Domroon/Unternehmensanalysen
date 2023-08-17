@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="row">
+        <h1>Mittelverwendung</h1>
+        <div class="col">
+          <form action="">
+            <div class="mb-3 box">
+              <h2>Anlagevermögen</h2>
+              <label class="form-label">Grundstücke und Gebäude</label>
+              <input id="propertiesInput" type="text" class="form-control" value="1250000"/>
+              <label class="form-label"
+                >Betriebs- und Geschäftsausstattung</label
+              >
+              <input id="equipmentInput" type="text" class="form-control" value="1380300"/>
+              <label class="form-label">Fuhrpark</label>
+              <input id="carpoolInput" type="text" class="form-control" value="172000"/>
+            </div>
+            <div class="mb-3 box">
+              <h2>Umlaufvermögen</h2>
+              <label class="form-label">Guthaben bei Banken</label>
+              <input id="bankInput" type="text" class="form-control" value="52000"/>
+              <label class="form-label">Kassenbestand</label>
+              <input id="checkoutInput" type="text" class="form-control" value="4700"/>
+              <label class="form-label"
+                >Forderungen aus Lieferungen und Leistungen</label
+              >
+              <input id="requirementsInput" type="text" class="form-control" value="118000"/>
+              <label class="form-label">Warenbestand</label>
+              <input id="goodsInput" type="text" class="form-control" value="14000" />
+            </div>
+          </form>
+        </div>
+        <div class="col">
+          <h1>Mittelherkunft</h1>
+          <form action="">
+            <div class="mb-3 box">
+              <h2>Eigenkapital</h2>
+              <input id="capitalInput" type="text" class="form-control" value="1954000" />
+            </div>
+            <div class="mb-3 box">
+              <h2>Langfristiges Fremdkapital</h2>
+              <label class="form-label">Darlehen bei Banken</label>
+              <input id="loanInput" type="text" class="form-control" value="872000" />
+            </div>
+            <div class="mb-3 box">
+              <h2>Kurzfristiges Fremdkapital</h2>
+              <p>Verbindlichkeiten aus</p>
+              <label class="form-label">Lieferungen und Leistungen</label>
+              <input id="servicesInput" type="text" class="form-control" value="125000" />
+              <label class="form-label">Kurzfristige Kredite</label>
+              <input id="shortTermLoanInput" type="text" class="form-control" value="40000" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input
+            class="btn"
+            id="sendBtn"
+            type="submit"
+            value="Absenden"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          />
+        </div>
+      </div>
+    </section>
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          Ergebnisse
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>
+          Hier sind die Ergebnisse, welche mithilfe der Felder berechnet wurden.
+          Beachte, dass die Summen der Mittelherkunft und der Mittelverwendung
+          gleich sein müssen.
+        </p>
+        <hr>
+        <div class="alert alert-warning hide" role="alert" id="sums-warning">
+          <h5 class="row">Achtung</h5>
+          <div class="row">
+            Überprüfe Deine eingegebenen Werte. Die Summen von Mittelherkunft und Mittelverwendung müssen gleich sein.
+          </div>
+        </div>
+        <div class="alert alert-success" id="liquidity1Field" role="alert">
+          <div class="row">
+            <div class="field-name col-6">Liquidität 1</div>
+            <div class="col-4" id="liquidity1Result"></div>
+            <div class="col-2 img-wrapper">
+              <img src="happiness.png" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-danger" id="liquidity2Field" role="alert">
+          <div class="row">
+            <div class="field-name col-6">Liquidität 2</div>
+            <div class="col-4" id="liquidity2Result"></div>
+            <div class="col-2 img-wrapper">
+              <img src="sad.png" alt="" />
+            </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" id="liquidity3Field" role="alert">
+        <div class="row">
+          <div class="field-name col-6">Liquidität 3</div>
+          <div class="col-4" id="liquidity3Result"></div>
+          <div class="col-2 img-wrapper">
+            <img src="sad.png" alt="" />
+          </div>
+      </div>
+    </div>
+    <div class="alert alert-danger" id="investmentCoverageField" role="alert">
+      <div class="row">
+        <div class="field-name col-6">Anlagendeckung I</div>
+        <div class="col-4" id="investmentCoverageResult"></div>
+        <div class="col-2 img-wrapper">
+          <img src="sad.png" alt="" />
+        </div>
+    </div>
+  </div>
+  <div class="alert alert-danger" id="equityRatioField" role="alert">
+    <div class="row">
+      <div class="field-name col-6">Eigenkapitalquote</div>
+      <div class="col-4" id="equityRatioResult"></div>
+      <div class="col-2 img-wrapper">
+        <img src="sad.png" alt="" />
+      </div>
+  </div>
+</div>
+<div class="alert alert-danger" id="leverageField" role="alert">
+  <div class="row">
+    <div class="field-name col-6">Verschuldungsgrad</div>
+    <div class="col-4" id="leverageResult"></div>
+    <div class="col-2 img-wrapper">
+      <img src="sad.png" alt="" />
+    </div>
+</div>
+</div>
+</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
